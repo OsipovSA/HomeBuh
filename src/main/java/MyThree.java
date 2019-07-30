@@ -1,7 +1,6 @@
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.w3c.dom.ranges.DocumentRange;
 import org.xml.sax.SAXException;
 import org.w3c.dom.Document;
 
@@ -14,7 +13,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -112,7 +110,6 @@ public class MyThree extends JTree {
                 // Сохраняем в файл
                 TransformerFactory transformerFactory = TransformerFactory.newInstance();
                 Transformer transformer = transformerFactory.newTransformer();
-                DOMSource domSource = new DOMSource(document);
                 transformer.transform(new DOMSource(document),
                         new StreamResult(new FileOutputStream(fileName)));
 
@@ -130,7 +127,7 @@ public class MyThree extends JTree {
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
             Document document = builder.parse(fileName);
-            root = (Node) document.getDocumentElement();
+            root = document.getDocumentElement();
 
         }catch(IOException | ParserConfigurationException | SAXException e)
         {
@@ -138,7 +135,7 @@ public class MyThree extends JTree {
             JOptionPane.showMessageDialog(null, "Can't parse file",
                     "Error", JOptionPane.ERROR_MESSAGE);
             return;
-        };
+        }
 
         if(root!=null){
             defaultTreeModel= new DefaultTreeModel(builtDefaultTreeModel(root));

@@ -5,14 +5,24 @@ import java.util.Date;
  */
 public class BuhRecord {
 
+    private String category;
     private Date date;
     private String name;
     private Double sum;
 
-    public BuhRecord(Date date, String name, Double sum) {
+    public BuhRecord(String category, Date date, String name, Double sum) {
+        this.category = category;
         this.date = date;
         this.name = name;
         this.sum = sum;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public Date getDate() {
@@ -42,7 +52,8 @@ public class BuhRecord {
     @Override
     public String toString() {
         return "BuhRecord{" +
-                "date=" + date +
+                "category='" + category + '\'' +
+                ", date=" + date +
                 ", name='" + name + '\'' +
                 ", sum=" + sum +
                 '}';
@@ -55,6 +66,7 @@ public class BuhRecord {
 
         BuhRecord buhRecord = (BuhRecord) o;
 
+        if (!category.equals(buhRecord.category)) return false;
         if (!date.equals(buhRecord.date)) return false;
         if (!name.equals(buhRecord.name)) return false;
         if (!sum.equals(buhRecord.sum)) return false;
@@ -64,7 +76,8 @@ public class BuhRecord {
 
     @Override
     public int hashCode() {
-        int result = date.hashCode();
+        int result = category.hashCode();
+        result = 31 * result + date.hashCode();
         result = 31 * result + name.hashCode();
         result = 31 * result + sum.hashCode();
         return result;
