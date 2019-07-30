@@ -43,7 +43,7 @@ public class MainWindow extends JFrame {
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 treePanel, tablePanel);
         splitPane.setOneTouchExpandable(true);
-        splitPane.setDividerLocation(150);
+        splitPane.setDividerLocation(120);
 
         Container contentPane = getContentPane();
         contentPane.add(splitPane,BorderLayout.CENTER);
