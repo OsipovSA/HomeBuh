@@ -14,7 +14,7 @@ public class MainWindow extends JFrame {
         myThree = new MyThree();
 
         // Сразу создадим панели
-        JSplitPane splitPane = new JSplitPane();
+        JSplitPane splitPane;
         JPanel treePanel = new JPanel();
         JPanel tablePanel = new JPanel();
 
@@ -25,34 +25,43 @@ public class MainWindow extends JFrame {
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         treePanel.add(jTreeScrollPane);
+        JLabel categoryLabel = new JLabel("Введите название категории:");
+        categoryLabel.setAlignmentX(JComponent.RIGHT_ALIGNMENT);
 
-        treePanel.add(new JLabel("Введите название:"));
+        treePanel.add(categoryLabel);
 
         categoryName = new JTextField();
         treePanel.add(categoryName);
 
+        JPanel buttonTreePanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+
         addButton = new JButton("Аdd category");
-        treePanel.add(addButton);
+        buttonTreePanel.add(addButton);
 
         deleteButton = new JButton("Delete category");
-        treePanel.add(deleteButton);
+        buttonTreePanel.add(deleteButton);
 
+        treePanel.add(buttonTreePanel);
+
+        //tablePanel.setLayout(new BorderLayout());
+        //tablePanel.add(new JLabel("Тут будет таблица"),BorderLayout.NORTH);
         tablePanel.add(new JLabel("Тут будет таблица"));
 
         // В главной панели установим горизонтальный лэйаут
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
                 treePanel, tablePanel);
         splitPane.setOneTouchExpandable(true);
-        splitPane.setDividerLocation(120);
+        splitPane.setDividerLocation(300);
 
         Container contentPane = getContentPane();
         contentPane.add(splitPane,BorderLayout.CENTER);
 
         // Вывод окна на экран
         setTitle("HomeBuh");
-
-        pack();
+        setSize(800,600);
+        setLocationRelativeTo(null);
+        //pack();
         setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }
