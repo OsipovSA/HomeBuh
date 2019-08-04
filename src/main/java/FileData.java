@@ -20,12 +20,12 @@ import java.nio.file.Paths;
 /**
  * Created by Sergey on 04.08.2019.
  */
-public class FileDataForTreeModel implements IDataForTreeModel {
+public class FileData implements IDataForTreeModel {
 
     final String fileName = "HomeBuh.xml";
     Node root = null;
 
-    public FileDataForTreeModel() {
+    public FileData() {
         this.root = getDateForTreeModel();
     }
 
