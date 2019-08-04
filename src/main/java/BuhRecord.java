@@ -9,6 +9,8 @@ public class BuhRecord {
     private Date date;
     private String name;
     private Double sum;
+    // Const
+    private static final int colCount = 4;
 
     public BuhRecord(String category, Date date, String name, Double sum) {
         this.category = category;
@@ -47,6 +49,10 @@ public class BuhRecord {
 
     public void setSum(Double sum) {
         this.sum = sum;
+    }
+
+    public int getColCount() {
+        return colCount;
     }
 
     @Override

@@ -92,7 +92,7 @@ public class FileData implements IDataForTreeModel {
                 return null;
             }
         }
-        // Читаем файл в DefaultTreeModel
+        // Считываем файл и отдаём root для дальнейшего построения модели
         try{
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
