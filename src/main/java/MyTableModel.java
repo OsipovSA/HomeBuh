@@ -16,6 +16,21 @@ public class MyTableModel extends AbstractTableModel {
     }
 
     @Override
+    public String getColumnName(int column) {
+        switch (column){
+            case(0):
+                return "Категория";
+            case(1):
+                return "Дата";
+            case(2):
+                return "Наименование расхода";
+            case(3):
+                return "Сумма";
+        }
+        return "";
+    }
+
+    @Override
     public int getRowCount() {
         String category = records.getCategory();
         if(category.equals("Категории")){

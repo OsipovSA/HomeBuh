@@ -47,7 +47,7 @@ public class MainWindow extends JFrame {
         tablePanel.setLayout(new BorderLayout());
         //tablePanel.add(new JLabel("Тут будет таблица"),BorderLayout.NORTH);
         JTable buhTable = new MyTable();
-        tablePanel.add(buhTable, BorderLayout.CENTER);
+        tablePanel.add(new JScrollPane(buhTable), BorderLayout.CENTER);
 
         // В главной панели установим горизонтальный лэйаут
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
