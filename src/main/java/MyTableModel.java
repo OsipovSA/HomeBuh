@@ -2,6 +2,7 @@
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Sergey on 04.08.2019.
@@ -17,28 +18,43 @@ public class MyTableModel extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return tableRecords.get(records.getCategory()).size();
+        String category = records.getCategory();
+        if(category.equals("Категории")){
+            return 0;
+        }else {
+            return tableRecords.get(category).size();
+        }
     }
 
     @Override
     public int getColumnCount() {
-        return tableRecords.get(records.getCategory()).get(0).getColCount();
+        String category = records.getCategory();
+        if(category.equals("Категории")){
+            return 0;
+        }else {
+            return tableRecords.get(category).get(0).getColCount();
+        }
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        List categoryList = tableRecords.get(records.getCategory());
-        BuhRecord buhRecord = (BuhRecord) categoryList.get(rowIndex);
-        switch (columnIndex){
-            case(0):
-                return buhRecord.getCategory();
-            case(1):
-                return buhRecord.getDate();
-            case(2):
-                return buhRecord.getName();
-            case(3):
-                return buhRecord.getSum();
+        String category = records.getCategory();
+        if(category.equals("Категории")){
+            return null;
+        }else{
+            List categoryList = tableRecords.get(records.getCategory());
+            BuhRecord buhRecord = (BuhRecord) categoryList.get(rowIndex);
+            switch (columnIndex){
+                case(0):
+                    return buhRecord.getCategory();
+                case(1):
+                    return buhRecord.getDate();
+                case(2):
+                    return buhRecord.getName();
+                case(3):
+                    return buhRecord.getSum();
+            }
+            return "Не определена";
         }
-        return "Не определена";
     }
 }
