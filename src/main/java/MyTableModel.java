@@ -2,7 +2,6 @@
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by Sergey on 04.08.2019.
@@ -54,7 +53,7 @@ public class MyTableModel extends AbstractTableModel {
                 case(3):
                     return buhRecord.getSum();
             }
-            return "Не определена";
+            return "Нет значения";
         }
     }
 }
