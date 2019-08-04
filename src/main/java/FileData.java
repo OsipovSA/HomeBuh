@@ -20,13 +20,23 @@ import java.nio.file.Paths;
 /**
  * Created by Sergey on 04.08.2019.
  */
-public class FileData implements IDataForTreeModel {
+// Так как класс FileData нам понадобится в 2-ух местах, а чтение
+// он должен выполнить только 1 раз - то похоже это тоже Синглтон
+public class FileData implements IData {
 
+    private static FileData instance;
     final String fileName = "HomeBuh.xml";
-    Node root = null;
+    private Node root = null;
 
-    public FileData() {
-        this.root = getDateForTreeModel();
+    private FileData() {
+        this.root = getDate();
+    }
+
+    public static FileData getInstance() {
+        if(instance==null){
+            instance = new FileData();
+        }
+        return instance;
     }
 
     public Node getRoot() {
@@ -34,7 +44,7 @@ public class FileData implements IDataForTreeModel {
     }
 
     @Override
-    public Node getDateForTreeModel() {
+    public Node getDate() {
         if(!Files.exists(Paths.get(fileName))) {
             // Создаём файл с некоторыми пустыми категориями
             try {

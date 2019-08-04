@@ -11,6 +11,7 @@ public class MainWindow extends JFrame {
     JTextField categoryName;
 
     public MainWindow() throws HeadlessException {
+        // JTree
         myThree = new MyThree();
 
         // Сразу создадим панели
@@ -43,9 +44,10 @@ public class MainWindow extends JFrame {
 
         treePanel.add(buttonTreePanel);
 
-        //tablePanel.setLayout(new BorderLayout());
+        tablePanel.setLayout(new BorderLayout());
         //tablePanel.add(new JLabel("Тут будет таблица"),BorderLayout.NORTH);
-        tablePanel.add(new JLabel("Тут будет таблица"));
+        JTable buhTable = new MyTable();
+        tablePanel.add(buhTable, BorderLayout.CENTER);
 
         // В главной панели установим горизонтальный лэйаут
         splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
@@ -58,7 +60,7 @@ public class MainWindow extends JFrame {
 
         // Вывод окна на экран
         setTitle("HomeBuh");
-        setSize(800,600);
+        setSize(1200,800);
         setLocationRelativeTo(null);
         //pack();
         setVisible(true);

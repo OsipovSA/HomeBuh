@@ -1,18 +1,16 @@
-import java.util.Date;
-
 /**
  * Created by Sergey on 29.07.2019.
  */
 public class BuhRecord {
 
     private String category;
-    private Date date;
+    private String date;
     private String name;
     private Double sum;
     // Const
     private static final int colCount = 4;
 
-    public BuhRecord(String category, Date date, String name, Double sum) {
+    public BuhRecord(String category, String date, String name, Double sum) {
         this.category = category;
         this.date = date;
         this.name = name;
@@ -27,11 +25,11 @@ public class BuhRecord {
         this.category = category;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

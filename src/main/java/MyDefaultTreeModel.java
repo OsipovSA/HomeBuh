@@ -48,7 +48,7 @@ public class MyDefaultTreeModel {
 
     public DefaultTreeModel getDefaultTreeModel() {
 
-        root = new FileData().getRoot();
+        root = FileData.getInstance().getRoot();
         if(root!=null) {
             return new DefaultTreeModel(builtDefaultTreeModel(root));
         }else{

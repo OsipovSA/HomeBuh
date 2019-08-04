@@ -5,8 +5,8 @@ import javax.swing.*;
  */
 public class MyTable extends JTable {
     public MyTable() {
-        Records records = Records.getRecords();
+        Records records = Records.getInstance();
         MyTableModel tableModel = new MyTableModel(records);
-        this.setModel(tableModel.getTableModel());
+        this.setModel(tableModel);
     }
 }
